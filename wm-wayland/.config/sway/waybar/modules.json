@@ -1,0 +1,149 @@
+{
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": ""
+      }
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+          "1": "一",
+          "2": "二",
+          "3": "三",
+          "4": "四",
+          "5": "五",
+          "6": "六",
+          "7": "七",
+          "8": "八",
+          "9": "九",
+          "10": "十"
+        }
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+          "1": "一",
+          "2": "二",
+          "3": "三",
+          "4": "四",
+          "5": "五",
+          "6": "六",
+          "7": "七",
+          "8": "八",
+          "9": "九",
+          "10": "十"
+        },
+        "on-click": "activate",
+        "sort-by-number": true,
+        "active-only": false
+    },
+    "sway/window": {
+        "format": "<span foreground=\"#A7C080\"> </span> {}",
+        "max-length": 50,
+        "rewrite": {
+          "(.*) - Mozilla Firefox": "🌎 $1",
+          "(.*) - vim": " $1",
+          "(.*) - zsh": " [$1]"
+        }
+    },
+    "hyprland/window": {
+        "max-length": 25
+    },
+    "clock": {
+        "format": "{:%H:%M %p}",
+        "format-alt": "{:%a, %d. %b %Y - %H:%M}"
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "<span foreground=\"#A7C080\">{icon}</span> {percent}% ",
+        "format-icons": [
+            "",
+            ""
+        ],
+        "tooltip-format": "Brightness"
+    },
+    "pulseaudio": {
+        "format": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\">{icon}</span> {volume}% ",
+        "format-bluetooth": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\"></span> {volume}% ",
+        "format-muted": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\"></span> ",
+        "format-icons": {
+            "headphone": "",
+            "default": [
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 1,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ]
+    },
+    "network": {
+        "format": "<span foreground=\"#3D484D\">|</span> {ifname}",
+        "format-wifi": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\"></span> {signalStrength}%",
+        "format-ethernet": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\">󰊗</span> {ipaddr}/{cidr}",
+        "format-disconnected": "",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
+    "hyprland/language": {
+        "format": "<span foreground=\"#A7C080\">󰌌</span> {short} <span foreground=\"#3D484D\">|</span>"
+    },
+    "keyboard-state": {
+        "capslock": true,
+        "format": " <span foreground=\"#A7C080\">󰪛</span> {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "battery": {
+      "bat": "BAT0",
+      "interval": 60,
+      "states": {
+          "warning": 30,
+          "critical": 15
+      },
+      "format-icons": ["", "", "", "", ""],
+      "format": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\">{icon}</span> {capacity}% ",
+      "tooltip-format": "{timeTo} {power}w",
+    },
+    "battery#bat2": {
+      "bat": "BAT1",
+      "interval": 60,
+      "states": {
+          "warning": 30,
+          "critical": 15
+      },
+      "format": "{capacity}% ",
+      "tooltip-format": "{timeTo} {power}w",
+    },
+    "disk": {
+        "interval": 30,
+        "format": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\" weight=\"bold\">/</span> {percentage_used}% ",
+        "path": "/"
+    },
+    "cpu": {
+        "format": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\" weight=\"bold\">CPU</span> {usage}% "
+    },
+    "memory": {
+        "format": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\" weight=\"bold\">RAM</span> {}% "
+    },
+    "tray": {
+      "icon-size": 14,
+      "spacing": 10
+    },
+    "custom/notif": {
+        "format": "",
+        "on-click": "swaync-client -t -sw",
+        "tooltip": false
+    }
+}

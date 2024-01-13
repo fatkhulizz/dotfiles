@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+swaylock --daemonize \
+	--image "$HOME/Pictures/walls/snow-lock.png" \
+	--scaling stretch \
+	--indicator-idle-visible \
+	--indicator-radius 150 \
+	--indicator-thickness 12 \
+	--ring-color 2E3440 \
+	--key-hl-color ECEFF4 \
+	--line-color 88C0D0 \
+	--inside-color 00000040 \
+	--separator-color 00000000 \
+	--text-color ECEFF4 \
+	--text-caps-lock-color ECEFF4 \
+	--show-failed-attempts

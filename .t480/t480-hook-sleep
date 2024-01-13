@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# This is a systemd hook script that is run whenever
+# suspend/resume takes place. It should be symlinked into
+# /usr/lib/systemd/system-sleep.
+
+# $1 is 'pre' (going to sleep) or 'post' (waking up)
+# $2 is 'suspend', 'hibernate' or 'hybrid-sleep'
+case "$1/$2" in
+pre/*)
+	if lsmod | grep -q thunderbolt; then
+		rmmod thunderbolt
+	fi
+	;;
+post/*)
+	modprobe thunderbolt
+	;;
+esac
