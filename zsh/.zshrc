@@ -130,6 +130,7 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
+zvm_after_init_commands+=('source /usr/share/doc/fzf/examples/key-bindings.zsh')
 
 #||| ALIAS |||#
 alias mpv='flatpak run io.mpv.Mpv'
