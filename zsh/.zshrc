@@ -142,7 +142,7 @@ alias e='exa'
 alias vim='nvim'
 alias vimvs='NVIM_APPNAME=vscodenvim nvim'
 alias vimchad='NVIM_APPNAME=nvimchad nvim'
-alias vimastro='NVIM_APPNAME=nvimastro nvim'
+alias rsynccp='rsync --archive --modify-window=2 --progress --verbose --itemize-changes --stats --human-readable'
 
 #||| PATH |||#
 
