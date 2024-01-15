@@ -1,6 +1,5 @@
 # modules to load before zsh-completions
 zmodule asdf
-zmodule joshskidmore/zsh-fzf-history-search
 
 # Start configuration added by Zim install {{{
 #
