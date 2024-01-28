@@ -23,4 +23,8 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
 vim.g.netrw_banner = 0
+vim.o.shortmess = "I"
+vim.opt.pumheight = 10
+-- vim.opt.pumblend = 0
+
 -- vim: ts=2 sts=2 sw=2 et
