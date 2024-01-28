@@ -130,7 +130,8 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
-zvm_after_init_commands+=('source /usr/share/doc/fzf/examples/key-bindings.zsh')
+# zvm_after_init_commands+=('source /usr/share/doc/fzf/examples/key-bindings.zsh')
+zvm_after_init_commands+=('source /etc/zsh_completion.d/fzf-key-bindings')
 
 #||| ALIAS |||#
 alias mpv='flatpak run io.mpv.Mpv'
@@ -138,9 +139,9 @@ alias yt1='flatpak run io.mpv.Mpv --profile=yt1080'
 alias yt2='flatpak run io.mpv.Mpv --profile=yt720'
 alias toclip='xclip -selection clipboard'
 alias duh='du -h --max-depth=1'
-alias e='exa'
+alias e='eza'
 alias vim='nvim'
-alias vimvs='NVIM_APPNAME=vscodenvim nvim'
+alias vimvs='NVIM_APPNAME=vimvs nvim'
 alias vimchad='NVIM_APPNAME=nvimchad nvim'
 alias rsynccp='rsync --archive --modify-window=2 --progress --verbose --itemize-changes --stats --human-readable'
 
