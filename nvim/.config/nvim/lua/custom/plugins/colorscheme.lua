@@ -1,18 +1,27 @@
 return {
-  "EdenEast/nightfox.nvim",
-  priority = 1000,
-  config = function(_, opts)
-    require("nightfox").setup(opts)
-    vim.cmd("colorscheme terafox")
-  end,
-  opts = {
-    options = {
-      -- transparent = true,
-      styles = {
-        comments = "italic",
-        keywords = "bold",
-        types = "italic,bold",
+  -- {
+  --   'ribru17/bamboo.nvim',
+  --   Lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require('bamboo').setup {
+  --       -- optional configuration here
+  --       toggle_style_key = "<leader>ts",
+  --       transparent = true,
+  --     }
+  --     require('bamboo').load()
+  --   end,
+  -- },
+  {
+    "folke/tokyonight.nvim",
+    Lazy = false,
+    priority = 1000,
+    config = function()
+      require('tokyonight').setup {
+        -- style = "moon",
+        transparent = true,
       }
-    },
-  }
+      vim.cmd("colorscheme tokyonight")
+    end,
+  },
 }
