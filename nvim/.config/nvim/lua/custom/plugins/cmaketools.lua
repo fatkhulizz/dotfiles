@@ -2,10 +2,9 @@ return {
   {
     "Civitasv/cmake-tools.nvim",
     opts = {},
-    event = "VeryLazy",
-    keys = {
-      { "<leader>cb", "<cmd>CMakeQuickBuild<cr>", desc = "CMake Quick Build" },
-    },
+    Lazy = true,
+    cmd = 'CMakeGenerate',
+    keys = { { "<leader>cb", "<cmd>CMakeQuickBuild<cr>", desc = "CMake Quick Build" }, },
   },
   {
     "nvim-treesitter/nvim-treesitter",
