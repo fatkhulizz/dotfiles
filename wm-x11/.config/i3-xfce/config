@@ -7,7 +7,7 @@ set $down j
 set $up k
 set $right l
 
-set $term alacritty
+set $term wezterm
 set $files thunar
 set $www flatpak run org.mozilla.firefox
 # set $lock i3lock --nofork --ignore-empty-password --show-failed-attempts --image=$HOME/Pictures/walls/snow-lock.png
@@ -68,8 +68,8 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous 
 
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
 ### Basics:
     bindsym $mod+Return exec $term
