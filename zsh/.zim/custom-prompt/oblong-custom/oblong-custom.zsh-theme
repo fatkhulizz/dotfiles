@@ -22,11 +22,11 @@ typeset -gA git_info
 if (( ${+functions[git-info]} )); then
   zstyle ':zim:git-info:branch' format '%b'
   zstyle ':zim:git-info:commit' format '%c'
-  zstyle ':zim:git-info:clean' format '%F{green}  '
-  zstyle ':zim:git-info:dirty' format '%F{red}  '
+  zstyle ':zim:git-info:clean' format '%F{green}  '
+  zstyle ':zim:git-info:dirty' format '%F{red}  '
   zstyle ':zim:git-info:keys' format \
       'prompt' ' %F{008}%b%c%C%D'
 
   autoload -Uz add-zsh-hook && add-zsh-hook precmd git-info
 fi
-PS1='%(?:%F{blue}:%F{red})  ${VIRTUAL_ENV:+"(${VIRTUAL_ENV:t}) "}%(!:%F{red}:%F{white})%n%f%F:$(_prompt_basher_pwd)${(e)git_info[prompt]} %f%(!:#: ) '
+PS1='%(?:%F{blue}:%F{red}) ${VIRTUAL_ENV:+"(${VIRTUAL_ENV:t}) "}%(!:%F{red}:%F{white})%n%f%F:$(_prompt_basher_pwd)${(e)git_info[prompt]} %f%(!:#: ) '
