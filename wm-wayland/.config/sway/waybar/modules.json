@@ -10,36 +10,6 @@
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{icon}",
-        "format-icons": {
-          "1": "一",
-          "2": "二",
-          "3": "三",
-          "4": "四",
-          "5": "五",
-          "6": "六",
-          "7": "七",
-          "8": "八",
-          "9": "九",
-          "10": "十"
-        }
-    },
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-          "1": "一",
-          "2": "二",
-          "3": "三",
-          "4": "四",
-          "5": "五",
-          "6": "六",
-          "7": "七",
-          "8": "八",
-          "9": "九",
-          "10": "十"
-        },
-        "on-click": "activate",
-        "sort-by-number": true,
-        "active-only": false
     },
     "sway/window": {
         "format": "<span foreground=\"#A7C080\"> </span> {}",
@@ -49,9 +19,6 @@
           "(.*) - vim": " $1",
           "(.*) - zsh": " [$1]"
         }
-    },
-    "hyprland/window": {
-        "max-length": 25
     },
     "clock": {
         "format": "{:%H:%M %p}",
@@ -138,8 +105,8 @@
         "format": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\" weight=\"bold\">RAM</span> {}% "
     },
     "tray": {
-      "icon-size": 14,
-      "spacing": 10
+      "icon-size": 20,
+      "spacing": 5
     },
     "custom/notif": {
         "format": "",

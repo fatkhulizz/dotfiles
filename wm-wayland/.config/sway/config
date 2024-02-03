@@ -7,14 +7,14 @@ set $down j
 set $up k
 set $right l
 
-set $term foot
+set $term wezterm
 set $files dolphin
-# set $www flatpak run io.gitlab.librewolf-community
 set $www flatpak run org.mozilla.firefox
 set $toggle_notif swaync-client -t -sw
-# set $conf_path $HOME/.config/sway
 set $menu $HOME/.config/sway/rofi/scripts/launcher.sh
+# set $menu wofi --show drun
 set $powermenu $HOME/.config/sway/rofi/scripts/powermenu.sh
+set $obsidian_nvim ~/AppImage/neovide.AppImage ~/Documents/Obsidian_Vault/personal/
 
 include /etc/sway/config-vars.d/*
 
@@ -27,38 +27,58 @@ client.placeholder      #4b565c #4b565c #4b565c #4b565c
 client.urgent           #e67e80 #e67e80 #d3c6aa #e67e80
 client.background       #2b3339
 
-#||| EXEC |||#
-exec $HOME/.config/sway/scripts/portal-fix.sh
-# exec swaync
-#font scaling
-exec gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-exec /usr/libexec/polkit-agent-helper-1
-# exec waybar -c $HOME/.config/sway/waybar/config -s $HOME/.config/sway/waybar/style.css
-
 #||| SWAY |||#
 default_border pixel 3
 default_floating_border none
 # Create only gaps if more then one container
-smart_gaps on
+# smart_gaps on
 smart_borders on
 
 gaps inner 5
 gaps outer 0
 
-font pango:Jetbrains Mono Medium Nerd Font Complete 14
-
-
-# Inhibit Idle if a window is fullscreen
-for_window [class="^.*"] inhibit_idle fullscreen
-for_window [app_id="^.*"] inhibit_idle fullscreen
+# font pango:Jetbrains Mono Medium Nerd Font Complete 14
+font pango:Noto Sans 14
 
 # Focus window when mouse hovers it
 focus_follows_mouse yes
 # Moves mouse to the newly created window
 mouse_warping none
 
+#||| SWAYFX |||#
+blur enable
+blur_xray disable
+shadows enable
+corner_radius 10
+
 #||| Output configuration |||#
-output * bg $HOME/Pictures/walls/moon2.png fill
+for_window [app_id="(Calendar|Calculator|Power-statistics|Control-center)"] floating enable
+for_window [app_id="org.gnome.(Nautilus|Weather)"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [app_id="(pavucontrol|psensor)"] floating enable
+for_window [app_id="evolution-alarm-notify"] floating enable
+for_window [app_id="nemo"] floating enable
+for_window [app_id="evolution" title="Compose Message"] floating enable
+for_window [app_id="evolution" title="Re(.*)"] floating enable
+for_window [app_id="evolution" title="Fwd(.*)"] floating enable
+for_window [app_id="mpv"] floating enable
+for_window [app_id="mpv"] resize set 960 540
+for_window [app_id="mpv"] border pixel 0
+for_window [app_id="firefox" title="Pushbullet"] floating enable
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
+for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
+for_window [app_id="firefox" title="Pushbullet – Mozilla Firefox"] floating enable
+for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
+# Inhibit Idle if a window is fullscreen
+for_window [class="^.*"] inhibit_idle fullscreen
+for_window [app_id="^.*"] inhibit_idle fullscreen
+
+# Brave, chrome, chromium
+for_window [title="Picture-in-picture"] floating enable
+
+
+#||| Output configuration |||#
+output * bg $HOME/Pictures/walls/japan.png fill
 output eDP-1 scale 1
 
 # Disable the laptop screen when the lid is closed.
@@ -84,16 +104,30 @@ input "type:touchpad" {
     bindsym $mod+q exec $www
     bindsym $mod+shift+q exec $www -p ghost
     bindsym $mod+e exec $files
-    bindsym $mod+n $toggle_notif
+    bindsym $mod+n exec $toggle_notif
+    bindsym $mod+o exec $obsidian_nvim
 
     bindsym $mod+Shift+r reload
-    bindsym $mod+Shift+b exec killall -SIGUSR2 waybar
+    bindsym $mod+Shift+b exec killall -SIGUSR1 waybar
     bindsym $mod+w kill 
     bindsym $mod+shift+w exec $powermenu
 
     floating_modifier $mod normal
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    set $mode_system "What to do? (l) lock, (e) logout, (r) reboot, (s) suspend, (Shift+s) shutdown"
+    mode $mode_system {
+        bindsym l exec $screenlock; mode "default"
+        bindsym e exec swaymsg exit; mode "default"
+        bindsym r exec systemctl reboot; mode "default"
+        bindsym s exec systemctl suspend; mode "default"
+        bindsym Shift+s exec systemctl poweroff; mode "default"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+    bindsym $mod+Shift+e mode $mode_system
+
 
 ### Moving around:
     # Move your focus around
@@ -180,25 +214,66 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ### Media button
-    # Audio mappings
-    #TODO add player control
-    bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-    bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-    bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+# Audio mappings
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
-    #Brightness mappings
-    bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
-    bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+# Media player controls
+bindsym --no-warn XF86AudioPlay exec playerctl play-pause
+bindsym --no-warn XF86AudioNext exec playerctl next
+bindsym --no-warn XF86AudioPrev exec playerctl previous
 
-# screenshot
-    bindsym Print       exec grimshot --notify save active
-    bindsym Shift+Print exec grimshot --notify save area
-    bindsym Mod1+Print  exec grimshot --notify save output
-    bindsym Ctrl+Print  exec grimshot --notify save window
-    bindsym $mod+Print       exec grimshot --notify copy active
-    bindsym $mod+Shift+Print exec grimshot --notify copy area
-    bindsym $mod+Mod1+Print  exec grimshot --notify copy output
-    bindsym $mod+Ctrl+Print  exec grimshot --notify copy window
+#Brightness mappings
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+## Area selection shortcuts
+set $selected_window swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp
+set $focused_window swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"'
+set $focused_output swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name'
+## Screenshot commands
+### Full
+set $screenshot_full grim
+set $screenshot_full_clipboard grim - | wl-copy
+### Selected window
+set $screenshot_selected_window $selected_window | grim -g-
+set $screenshot_selected_window_clipboard $selected_window | grim -g- - | wl-copy
+### Selected area
+set $screenshot_selected_area slurp | grim -g-
+set $screenshot_selected_area_clipboard slurp | grim -g- - | wl-copy
+### Focused window
+set $screenshot_focused_window $focused_window | grim -g-
+set $screenshot_focused_window_clipboard $focused_window | grim -g- - | wl-copy
+### Focused output
+set $screenshot_focused_output grim -o $($focused_output)
+set $screenshot_focused_output grim -o $($focused_output) - | wl-copy
+
+## Screenshot mode menu
+set $screenshot "Screenshot: (f) full, (s) select window, (a) select area, (w) focused window, (o) focused output [Ctrl+ saves to clipboard]"
+mode $screenshot {
+    # Full
+    bindsym f exec $screenshot_full; mode "default"
+    bindsym Ctrl+f exec $screenshot_full_clipboard; mode "default"
+    # Selected window
+    bindsym s exec $screenshot_selected_window; mode "default"
+    bindsym Ctrl+s exec $screenshot_selected_window_clipboard; mode "default"
+    # Selected area
+    bindsym a exec $screenshot_selected_area; mode "default"
+    bindsym Ctrl+a exec $screenshot_selected_area_clipboard; mode "default"
+    # Focused window
+    bindsym w exec $screenshot_focused_window; mode "default"
+    bindsym Ctrl+w exec $screenshot_focused_window_clipboard; mode "default"
+    # Focused output
+    bindsym o exec $screenshot_focused_output; mode "default"
+    bindsym Ctrl+o exec $screenshot_focused_output_clipboard; mode "default"
+
+    # Exit screenshot mode menu
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Print mode "default"
+}
+bindsym $mod+Print mode $screenshot
 
 # rotate screen
     bindsym $mod+Ctrl+Up exec "swaymsg output eDP-1 transform 0"
@@ -207,18 +282,29 @@ bindsym $mod+r mode "resize"
     bindsym $mod+Ctrl+Left exec "swaymsg output eDP-1 transform 270"
 
 #||| Status Bar: |||#
-bar {
-    position top
+# bar {
+#     font pango:Noto Sans, Font Awesome 6 Free Regular 13
+#     position top
+#     tray_output primary
+#     status_command i3status-rs $HOME/.config/sway/i3status-rs.toml
+# }
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+#||| EXEC |||#
+# exec $HOME/.config/sway/scripts/portal-fix.sh
+# exec swaync
+# exec /usr/libexec/polkit-agent-helper-1
+exec waybar -c $HOME/.config/sway/waybar/config -s $HOME/.config/sway/waybar/style.css
 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+exec_always {
+    systemctl --user import-environment
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+    swaync --config ~/.config/sway/swaync/config.json
 }
 
-include /etc/sway/config.d/*
+exec /usr/libexec/polkit-gnome-authentication-agent-1
+
+# include /etc/sway/config.d/*

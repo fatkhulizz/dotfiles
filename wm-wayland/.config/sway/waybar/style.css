@@ -36,6 +36,12 @@ window#waybar {
 
 #idle_inhibitor {
     padding: 0 15px;
+    background-color: #2D353B;
+    color: #A7C080;
+}
+
+#idle_inhibitor.activated {
+    padding: 0 15px;
     background-color: #A7C080;
     color: #2D353B;
 }
@@ -60,6 +66,7 @@ window#waybar {
 
 #workspaces button.focused {
     background-color: #A7C080;
+    color: #2D353B;
 }
 
 #workspaces button:hover {
