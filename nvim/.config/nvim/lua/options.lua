@@ -27,4 +27,22 @@ vim.o.shortmess = "I"
 vim.opt.pumheight = 10
 -- vim.opt.pumblend = 0
 
+if vim.g.neovide then
+  vim.g.neovide_transparency = 0.8
+  vim.g.neovide_fullscreen = true
+  vim.o.guifont = "FantasqueSansM Nerd Font:h20"
+  vim.g.neovide_padding_top = 10
+  vim.g.neovide_padding_bottom = 10
+  vim.g.neovide_padding_right = 10
+  vim.g.neovide_padding_left = 10
+  vim.g.neovide_scroll_animation_length = 0.1
+  vim.g.neovide_cursor_vfx_mode = "railgun"
+  -- vim.keymap.set('n', '<C-S-v>', '"+p')
+  vim.keymap.set('n', '<C-S-v>', '"+p')    -- Paste normal mode
+  vim.keymap.set('v', '<C-S-v>', '"+p')    -- Paste visual mode
+  vim.keymap.set('c', '<C-S-v>', '<C-R>+') -- Paste command mode
+  vim.keymap.set('i', '<C-S-v>', '<C-R>+') -- Paste insert mode
+end
+
+
 -- vim: ts=2 sts=2 sw=2 et
