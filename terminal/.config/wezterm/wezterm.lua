@@ -39,15 +39,12 @@ end)
 config = {
 	-- enable_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = true,
-	-- color_scheme = 'Everforest Dark (Gogh)',
-	color_scheme = 'tokyonight',
-	colors = { background = 'black' },
-	-- window_background_opacity = 0.8,
-	window_background_image = '/home/fuzz/Pictures/walls/kanji_blurred.png',
+	color_scheme = 'Everforest Dark (Gogh)',
+	-- colors = { background = 'black' },
+	window_background_opacity = 0.9,
+	-- font = wezterm.font('Iosevka Nerd Font'),
 	font = wezterm.font('FantasqueSansM Nerd Font'),
-	-- font = wezterm.font('CaskaydiaCove Nerd Font Mono'),
-	-- font = wezterm.font('Mononoki Nerd Font Mono'),
-	font_size = 16.0,
+	font_size = 18.0,
 
 	window_padding = {
 		left = 10,
@@ -60,7 +57,7 @@ config = {
 	cursor_thickness = 1,
 
 	-- better underline
-	underline_thickness = 2,
+	underline_thickness = 4,
 	underline_position = -5,
 
 	-- disable ligature
