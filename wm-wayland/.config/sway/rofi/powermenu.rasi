@@ -5,7 +5,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "JetBrainsMono Nerd Font Propo Bold 20";
+    font:                        "Noto Sans Bold 20";
     background:                  #272e33;
     foreground:                  #a7c080;
     urgent:                      #83c092;
@@ -49,7 +49,7 @@ imagebox {
     spacing:                     0px;
     padding:                     100px;
     background-color:            transparent;
-    background-image:            url("~/.config/hypr/rofi/assets/man.png");
+    background-image:            url("~/.config/sway/rofi/assets/Opensuse.png", both);
     children:                    [ "dummy", "message" ];
 }
 
