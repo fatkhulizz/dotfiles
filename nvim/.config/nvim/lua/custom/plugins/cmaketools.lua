@@ -2,7 +2,7 @@ return {
   {
     "Civitasv/cmake-tools.nvim",
     opts = {},
-    Lazy = true,
+    lazy = true,
     cmd = 'CMakeGenerate',
     keys = { { "<leader>cb", "<cmd>CMakeQuickBuild<cr>", desc = "CMake Quick Build" }, },
   },

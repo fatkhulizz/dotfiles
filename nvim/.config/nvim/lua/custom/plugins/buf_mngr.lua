@@ -2,7 +2,7 @@ return {
   {
     "j-morano/buffer_manager.nvim",
     dependencies = "nvim-lua/plenary.nvim",
-    Lazy = true,
+    lazy = true,
     opts = {
       line_keys = "uiop[67890",
       select_menu_item_commands = {

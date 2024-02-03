@@ -1,7 +1,7 @@
 return {
   {
     "nvim-pack/nvim-spectre",
-    Lazy = true,
+    lazy = true,
     build = false,
     cmd = "Spectre",
     opts = { open_cmd = "noswapfile vnew" },
@@ -43,7 +43,7 @@ return {
 
   {
     "folke/zen-mode.nvim",
-    Lazy = true,
+    lazy = true,
     cmd = "ZenMode",
     opts = {
       plugins = {
