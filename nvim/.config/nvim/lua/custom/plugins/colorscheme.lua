@@ -8,20 +8,8 @@ end
 
 return {
   {
-    'ribru17/bamboo.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require('bamboo').setup {
-        -- optional configuration here
-        -- transparent = neovide_transparent()
-      }
-      -- require('bamboo').load()
-    end,
-  },
-
-  {
     'sainnhe/everforest',
+    enabled = false,
     lazy = false,
     priority = 1000,
     config = function()
@@ -32,20 +20,22 @@ return {
       vim.g.everforest_float_style = 'dim'
       vim.g.everforest_better_performance = 0 --default
 
-      vim.cmd.colorscheme('everforest')
+      -- vim.cmd.colorscheme('everforest')
     end,
   },
 
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   Lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require('tokyonight').setup {
-  --       -- style = "moon",
-  --       transparent = true,
-  --     }
-  --     vim.cmd("colorscheme tokyonight")
-  --   end,
-  -- },
+  {
+    "rose-pine/neovim",
+    name = 'rose-pine',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('rose-pine').setup {
+        style = {
+          transparency = true,
+        }
+      }
+      vim.cmd("colorscheme rose-pine")
+    end,
+  },
 }
