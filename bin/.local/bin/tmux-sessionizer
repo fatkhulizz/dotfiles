@@ -3,7 +3,10 @@
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	selected=$(find ~/Developer -mindepth 1 -maxdepth 2 -type d | fzf)
+	selected1=$(find ~/Developer -mindepth 1 -maxdepth 1 -type d)
+	selected2=$(find ~/Developer -mindepth 1 -maxdepth 4 -type d -path '*/project/*' -prune)
+	selected=$(echo -e "$selected1\n$selected2" | fzf)
+
 fi
 
 if [[ -z $selected ]]; then
