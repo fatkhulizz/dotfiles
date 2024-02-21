@@ -53,6 +53,7 @@ require('which-key').register {
   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
   ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+  ['<leader>x'] = { name = '[X]Xtrouble', _ = 'which_key_ignore' },
 }
 -- register which-key VISUAL mode
 -- required for visual <leader>hs (hunk stage) to work
@@ -77,7 +78,15 @@ require('mason-lspconfig').setup()
 local servers = {
   clangd = {
     cmd = {
-      '/home/fuzz/Developer/embedded/espressif/esp-clang/bin/clangd',
+      -- "/home/fuzz/Developer/embedded/espressif/esp-clang/bin/clangd",
+      "clangd",
+      "--query-driver=/home/fuzz/Developer/embedded/stm32/arm-none-eabi/bin/arm-none-eabi-gcc",
+      "--background-index",
+      "--clang-tidy",
+      "--header-insertion=iwyu",
+      "--completion-style=detailed",
+      "--function-arg-placeholders",
+      "--fallback-style=llvm",
     }
   },
   -- gopls = {},
