@@ -1,0 +1,143 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 27,
+  "modules-left": [
+    "idle_inhibitor",
+    "sway/workspaces",
+    "custom/scratch",
+    "sway/mode",
+    "sway/window"
+    
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "network",
+    "memory",
+    "cpu",
+    "backlight",
+    "pulseaudio",
+    "battery",
+    "battery#bat2",
+    "clock",
+    "tray",
+  ],
+  "cpu": {
+    "interval": 10,
+    "format": " {}%",
+    "max-length": 10
+},
+"memory": {
+    "interval": 30,
+    "format": "󰍛 {}%",
+    "max-length": 10
+},
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "",
+        "deactivated": ""
+    }
+},
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "disable-markup": true,
+    "format": "{index}"
+  },
+  "sway/mode": {
+    "max-length": 200
+},
+  "sway/window": {
+    "format": " {}",
+    "max-length": 25
+  },
+  "custom/scratch": {
+    "interval": 3,
+    "exec": "swaymsg -t get_tree | jq 'recurse(.nodes[]) | first(select(.name==\"__i3_scratch\")) | .floating_nodes | length | select(. >= 0)'",
+    "format": "^{}",
+    "on-click": "swaymsg 'scratchpad show'",
+    "on-click-right": "swaymsg 'move scratchpad'"
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 15
+  },
+  "clock": {
+    "format": "│ {:%a/%b%e  %H:%M %p} │",
+    "interval": 30
+  },
+  "battery": {
+    "bat": "BAT0",
+    "states": {
+      "full": 99,
+      "good": 98,
+      "normal": 98,
+      "warning": 20,
+      "critical": 20
+    },
+    "tooltip-format": "{timeTo} {power}w",
+    "format": "{icon} {capacity}%",
+    "format-good": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-full": " {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "interval": 30
+  },
+  "battery#bat2": {
+    "bat": "BAT1",
+    "states": {
+      "full": 99,
+      "good": 98,
+      "normal": 98,
+      "warning": 20,
+      "critical": 20
+    },
+    "format": "{capacity}% ",
+    "tooltip-format": "{timeTo} {power}w",
+  },
+"network": {
+    "interface": "wlp3s0",
+    "format": "{ifname}",
+    "format-wifi": "({signalStrength}%) ",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 25
+},
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%  ",
+    "format-icons": [
+      "󰃞",
+      "󰃝",
+      "󰃠",
+    ],
+    "interval": 60
+  },
+  "pulseaudio": {
+      "format": "{icon} {volume}% ",
+      "format-bluetooth": "{{icon} volume}%",
+      "format-muted": "",
+      "format-icons": {
+          "headphone": "",
+          "phone": "",
+          "portable": "",
+          "car": "",
+          "default": ["", ""]
+      },
+      "scroll-step": 1,
+      "on-click": "pavucontrol",
+      "ignored-sinks": ["Easy Effects Sink"]
+  }
+}
+
+# vim: ft=jsonc

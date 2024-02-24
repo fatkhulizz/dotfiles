@@ -1,0 +1,113 @@
+* {
+  font-family: "DejaVu Sans", "CaskaydiaCove Nerd Font Propo";
+  font-size: 15px;
+}
+
+@define-color bg #2D353B;
+@define-color fg #D3C6AA;
+@define-color bg_side #425047;
+@define-color green #A7C080;
+@define-color red #E67E80;
+
+window#waybar {
+  background-color: @bg;
+  color: @fg;
+}
+
+.modules-left {
+  background-color: @bg_side;
+  padding: 0px 0px 0px 0px;
+}
+
+.modules-right {
+  background-color: @bg_side;
+  padding: 0px 5px 0px 0px;
+}
+
+#custom-scratch {
+  background-color: @bg_side;
+  color: @fg;
+  padding: 0px 9px 0px 9px;
+}
+
+#idle_inhibitor {
+  padding: 0px 15px 0px 15px;
+}
+#idle_inhibitor.activated {
+  padding: 0px 15px 0px 15px;
+  background-color: @green;
+  color: @bg;
+}
+
+#workspaces button {
+  padding: 0px 11px 0px 11px;
+  min-width: 1px;
+  color: @fg;
+}
+
+#workspaces button.focused {
+  padding: 0px 11px 0px 11px;
+  background-color: @green;
+  color: #ffffff;
+}
+
+#mode {
+  background-color: @red;
+  color: @bg;
+  padding: 0px 5px 0px 5px;
+  border: 1px solid #2f343a;
+}
+
+#window {
+  color: @fg;
+  background-color: @bg;
+  padding: 0px 10px 0px 10px;
+}
+
+window#waybar.empty #window {
+  background-color: @bg;
+  color: transparent;
+}
+
+window#waybar.empty {
+  background-color: @bg;
+}
+
+#network,
+#backlight,
+#pulseudio,
+#cpu,
+#memory {
+  padding: 0px 10px 0px 10px;
+}
+#battery {
+  padding: 0px 0px 0px 10px;
+}
+#battery.Charging {
+  padding: 0px 0px 0px 10px;
+  color: @green;
+}
+#battery#bat2 {
+  padding: 0px 10px 0px 0px;
+}
+#battery#bat2.Charging {
+  padding: 0px 10px 0px 0px;
+  color: @green;
+}
+
+#clock {
+  margin: 0px 15px 0px 0px;
+}
+
+#tray {
+  padding: 0px 8px 0px 5px;
+  margin: 0px 5px 0px 5px;
+}
+
+#battery.critical {
+  color: @red;
+}
+
+#network.disconnected {
+  color: @red;
+}

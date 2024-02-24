@@ -14,7 +14,7 @@ set $toggle_notif swaync-client -t -sw
 set $menu $HOME/.config/sway/rofi/scripts/launcher.sh
 # set $menu wofi --show drun
 set $powermenu $HOME/.config/sway/rofi/scripts/powermenu.sh
-set $obsidian_nvim ~/AppImage/neovide.AppImage ~/Documents/Obsidian_Vault/personal/
+set $obsidian_nvim ~/AppImage/neovide.AppImage -- --cmd 'cd ~/Documents/Obsidian_Vault/personal'
 
 include /etc/sway/config-vars.d/*
 
@@ -46,10 +46,10 @@ focus_follows_mouse yes
 mouse_warping none
 
 #||| SWAYFX |||#
-blur enable
-blur_xray disable
-shadows enable
-corner_radius 10
+# blur enable
+# blur_xray disable
+# shadows enable
+# corner_radius 10
 
 #||| Output configuration |||#
 for_window [app_id="(Calendar|Calculator|Power-statistics|Control-center)"] floating enable
@@ -69,6 +69,9 @@ for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating ena
 for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
 for_window [app_id="firefox" title="Pushbullet – Mozilla Firefox"] floating enable
 for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
+for_window [app_id="xdg-desktop-portal-gtk"] floating enable
+# better gtk-file
+for_window [app_id="xdg-desktop-portal-gtk"] resize set 960 540
 # Inhibit Idle if a window is fullscreen
 for_window [class="^.*"] inhibit_idle fullscreen
 for_window [app_id="^.*"] inhibit_idle fullscreen
@@ -78,7 +81,7 @@ for_window [title="Picture-in-picture"] floating enable
 
 
 #||| Output configuration |||#
-output * bg $HOME/Pictures/walls/japan.png fill
+output * bg $HOME/Pictures/walls/linkinpark.png fill
 output eDP-1 scale 1
 
 # Disable the laptop screen when the lid is closed.
@@ -113,21 +116,6 @@ input "type:touchpad" {
     bindsym $mod+shift+w exec $powermenu
 
     floating_modifier $mod normal
-    # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-    set $mode_system "What to do? (l) lock, (e) logout, (r) reboot, (s) suspend, (Shift+s) shutdown"
-    mode $mode_system {
-        bindsym l exec $screenlock; mode "default"
-        bindsym e exec swaymsg exit; mode "default"
-        bindsym r exec systemctl reboot; mode "default"
-        bindsym s exec systemctl suspend; mode "default"
-        bindsym Shift+s exec systemctl poweroff; mode "default"
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-    }
-    bindsym $mod+Shift+e mode $mode_system
-
 
 ### Moving around:
     # Move your focus around
@@ -250,7 +238,7 @@ set $screenshot_focused_output grim -o $($focused_output)
 set $screenshot_focused_output grim -o $($focused_output) - | wl-copy
 
 ## Screenshot mode menu
-set $screenshot "Screenshot: (f) full, (s) select window, (a) select area, (w) focused window, (o) focused output [Ctrl+ saves to clipboard]"
+set $screenshot "[f]ull │ [s]elect window │ select [a]rea │ focused [w]indow │ focused [o]utput"
 mode $screenshot {
     # Full
     bindsym f exec $screenshot_full; mode "default"
@@ -290,21 +278,22 @@ bindsym $mod+Print mode $screenshot
 # }
 
 #||| EXEC |||#
-# exec $HOME/.config/sway/scripts/portal-fix.sh
-# exec swaync
+exec $HOME/.config/sway/scripts/portal-fix.sh
 # exec /usr/libexec/polkit-agent-helper-1
 exec waybar -c $HOME/.config/sway/waybar/config -s $HOME/.config/sway/waybar/style.css
 
 exec_always {
     systemctl --user import-environment
-    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-    gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
-    gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
-    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-    gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-    swaync --config ~/.config/sway/swaync/config.json
+    # gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    # gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+    # gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+    # gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1.3
+    swaync --config ~/.config/sway/swaync/config.json --style ~/.config/sway/swaync/style.css
 }
 
-exec /usr/libexec/polkit-gnome-authentication-agent-1
+# exec /usr/libexec/polkit-gnome-authentication-agent-1
+# exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
+exec /usr/libexec/polkit-kde-authentication-agent-1
 
 # include /etc/sway/config.d/*

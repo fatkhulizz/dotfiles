@@ -9,7 +9,7 @@ logout='Logout'
 # Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
-		-theme $HOME/.config/sway/rofi/powermenu.rasi
+		-theme $HOME/.config/rofi/powermenu.rasi
 }
 
 # Pass variables to rofi dmenu

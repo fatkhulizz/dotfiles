@@ -1,7 +1,7 @@
 /*****----- Configuration -----*****/
 configuration {
-    font:                       "JetBrainsMono Nerd Font Propo 20";
-    terminal:                   "st";
+    font:                       "Noto Sans Semibold 24";
+    terminal:                   "alacritty";
     modi:                       "drun";
     show-icons:                 true;
     drun-display-format:        "{name}";  
@@ -13,7 +13,6 @@ configuration {
     selected:                    #83c092;
 }
 
-
 /*****----- Main Window -----*****/
 window {
     /* properties for window widget */
@@ -21,13 +20,15 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       1000px;
+    width:                       1350px;
+    height:                      600px;
     x-offset:                    0px;
     y-offset:                    0px;
 
     /* properties for all widgets */
     enabled:                     true;
-    border:                      0px;
+    border:                      5px;
+    border-radius:               30px;
     cursor:                      "default";
     background-color:            @background;
 }
@@ -44,9 +45,9 @@ mainbox {
 }
 
 imagebox {
-    padding:                     20px;
+    margin:                      0px 100px 0px 0px;
     background-color:            transparent;
-    background-image:            url("./assets/hawon.jpg");
+    background-image:            url("./assets/haewon.png", both);
     orientation:                 vertical;
     children:                    ["dummy", "inputbar" ];
 }
@@ -56,10 +57,10 @@ inputbar {
 }
 
 listbox {
-    spacing:                     10px;
-    width:                       500px;
-    padding:                     20px;
-    background-color:            transparent;
+    margin:                      0px 0px 0px -100px;
+    spacing:                     0px;
+    padding:                     40px;
+    background-color:            @background;
     orientation:                 vertical;
     children:                    [ "message", "listview" ];
 }
@@ -78,7 +79,7 @@ listview {
     scrollbar:                   false;
     layout:                      vertical;
     reverse:                     false;
-    fixed-height:                true;
+    fixed-height:                false;
     fixed-columns:               true;
     
     spacing:                     0px;
@@ -94,6 +95,7 @@ element {
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
+    border-radius:               10px;
 }
 element normal.normal {
     background-color:            inherit;
