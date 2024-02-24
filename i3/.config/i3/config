@@ -11,6 +11,7 @@ set $term alacritty
 set $files dolphin
 # set $www flatpak run org.mozilla.firefox
 set $www firefox
+set $menu ~/.config/rofi/scripts/launcher.sh
 set $lock i3lock --nofork --ignore-empty-password --show-failed-attempts --image=$HOME/Pictures/walls/sunset.png
 
 #||| Colors |||#
@@ -76,7 +77,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 
 ### Basics:
     bindsym $mod+Return exec $term
-    bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+    bindsym $mod+d exec --no-startup-id $menu
     bindsym $mod+q exec $www
     bindsym $mod+shift+q exec $www -p ghost
     bindsym $mod+e exec $files
