@@ -28,7 +28,9 @@ vim.opt.pumheight = 10
 
 if vim.g.neovide then
   vim.g.neovide_transparency = 0.8
-  vim.o.guifont = 'CaskaydiaCove Nerd Font:h20'
+  vim.o.guifont = 'CaskaydiaCove Nerd Font Mono:h12'
+  vim.g.neovide_font_hinting = 'none'
+  vim.g.neovide_font_edging = 'subpixelantialias'
   vim.g.neovide_padding_top = 10
   vim.g.neovide_padding_bottom = 10
   vim.g.neovide_padding_right = 10
