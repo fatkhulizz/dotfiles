@@ -74,7 +74,14 @@ else
 fi
 
 # Source additional local files if they exist.
+z4h source /etc/profile
 z4h source ~/.env.zsh
+# asdf
+z4h source -- ~/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+
+# added custom completions
+fpath=(~/.zsh_completions.d $fpath)
 
 # Use additional Git repositories pulled in with `z4h install`.
 #
