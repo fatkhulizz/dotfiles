@@ -82,11 +82,11 @@ local servers = {
       "clangd",
       "--query-driver=/home/fuzz/Developer/embedded/stm32/arm-none-eabi/bin/arm-none-eabi-gcc",
       "--background-index",
-      "--clang-tidy",
+      -- "--clang-tidy",
       "--header-insertion=iwyu",
       "--completion-style=detailed",
       "--function-arg-placeholders",
-      "--fallback-style=llvm",
+      "--fallback-style=webkit",
     }
   },
   -- gopls = {},
