@@ -78,9 +78,9 @@ require('mason-lspconfig').setup()
 local servers = {
   clangd = {
     cmd = {
-      -- "/home/fuzz/Developer/embedded/espressif/esp-clang/bin/clangd",
+      -- "/home/fuzz/Devs/embedded/espressif/esp-clang/bin/clangd",
       "clangd",
-      "--query-driver=/home/fuzz/Developer/embedded/stm32/arm-none-eabi/bin/arm-none-eabi-gcc",
+      "--query-driver=/home/fuzz/Devs/embedded/stm32/arm-none-eabi/bin/arm-none-eabi-gcc",
       "--background-index",
       -- "--clang-tidy",
       "--header-insertion=iwyu",

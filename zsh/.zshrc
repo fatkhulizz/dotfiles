@@ -141,11 +141,13 @@ alias rsynccp='rsync --archive --modify-window=2 --progress --verbose --itemize-
 #||| PATH |||#
 
 # arm-compiler
-export ARM_COMPILER="$HOME/Developer/embedded/stm32/arm-none-eabi"
+export ARM_COMPILER="$HOME/Devs/embedded/stm32/arm-none-eabi"
 export PATH="$ARM_COMPILER/bin:$PATH"
 
 # esp8266 toolchains
-export PATH="$HOME/Developer/embedded/espressif/xtensa-lx106-elf/bin:$PATH"
-export IDF_PATH="$HOME/Developer/embedded/espressif/ESP8266_RTOS_SDK"
+export PATH="$HOME/Devs/embedded/espressif/xtensa-lx106-elf/bin:$PATH"
+export IDF_PATH="$HOME/Devs/embedded/espressif/ESP8266_RTOS_SDK"
+
+# export PATH="$HOME/Devs/linux/ffmpeg/bin:$PATH"
 
 # export PATH="$HOME/Developer/linux/ffmpeg/bin:$PATH"
