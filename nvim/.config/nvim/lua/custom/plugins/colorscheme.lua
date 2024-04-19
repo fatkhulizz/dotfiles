@@ -25,21 +25,25 @@ return {
   },
 
   {
-    "rose-pine/neovim",
-    name = 'rose-pine',
-    lazy = false,
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
     config = function()
-      require('rose-pine').setup {
-        variant = "moon",
-        styles = {
-          transparency = neovide_transparent() == 1 and true or false,
+      require("catppuccin").setup {
+        flavour = "mocha",
+        integrations = {
+          indent_blankline = {
+            enabled = true,
+            scope_color = "green",
+            colored_indent_levels = false,
+          },
         }
       }
-
-      vim.cmd("colorscheme rose-pine")
-      -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    end,
-  },
+      vim.cmd("colorscheme catppuccin")
+      if not vim.g.neovide then
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      end
+    end
+  }
 }
