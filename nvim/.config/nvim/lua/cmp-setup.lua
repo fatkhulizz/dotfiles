@@ -76,6 +76,8 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
+  }, {
+    { name = 'buffer' },
   },
   formatting = {
     format = function(entry, vim_item)
