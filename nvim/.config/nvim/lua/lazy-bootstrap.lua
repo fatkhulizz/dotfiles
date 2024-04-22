@@ -22,10 +22,6 @@ require('lazy').setup({
   require 'custom.core-plugins.cmp-setup',
   require 'custom.core-plugins.treesitter-setup',
 
-  -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', event = 'VeryLazy', opts = {} },
-  { 'numToStr/Comment.nvim', event = 'VeryLazy', opts = {} },
-
   { import = 'custom.plugins' },
 }, {
   performance = {
