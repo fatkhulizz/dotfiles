@@ -39,12 +39,13 @@ end)
 config = {
 	-- enable_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = true,
-	color_scheme = 'Everforest Dark (Gogh)',
+	use_fancy_tab_bar = false,
+	color_scheme ='Catppuccin Mocha',
 	-- colors = { background = 'black' },
-	window_background_opacity = 0.9,
+	window_background_opacity = 0.8,
 	-- font = wezterm.font('Iosevka Nerd Font'),
-	font = wezterm.font('FantasqueSansM Nerd Font'),
-	font_size = 18.0,
+	font = wezterm.font('CaskaydiaCove Nerd Font Mono'),
+	font_size = 12.0,
 
 	window_padding = {
 		left = 10,
@@ -57,12 +58,12 @@ config = {
 	cursor_thickness = 1,
 
 	-- better underline
-	underline_thickness = 4,
-	underline_position = -5,
+	underline_thickness = 6,
+	underline_position = -4,
 
 	-- disable ligature
 	harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
-	window_decorations = "RESIZE"
+	-- window_decorations = "RESIZE"
 }
 
 
