@@ -12,7 +12,7 @@ set $files dolphin
 # set $www flatpak run org.mozilla.firefox
 set $www firefox
 set $menu ~/.config/rofi/scripts/launcher.sh
-set $lock i3lock --nofork --ignore-empty-password --show-failed-attempts --image=$HOME/Pictures/walls/sunset.png
+set $lock exec ~/.config/i3/scripts/blur-lock
 
 #||| Colors |||#
 include ~/.config/i3/colors.conf
@@ -111,8 +111,10 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +10%
     bindsym $mod+0 workspace number 10
 
     # move next and prev active workspace using [ and ]
-    bindsym $mod+bracketleft workspace prev
-    bindsym $mod+bracketright workspace next
+    bindsym $mod+bracketright exec ~/.config/i3/scripts/workspace.py switch 1
+    bindsym $mod+bracketleft exec ~/.config/i3/scripts/workspace.py switch -1
+    bindsym $mod+Shift+bracketright exec ~/.config/i3/scripts/workspace.py move 1
+    bindsym $mod+Shift+bracketleft exec ~/.config/i3/scripts/workspace.py move -1
 
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1, workspace number 1
