@@ -10,7 +10,7 @@ configuration {
 * {
     background:                  #272e33;
     foreground:                  #a7c080;
-    selected:                    #83c092;
+    selected-normal-background:  #83c092;
 }
 
 /*****----- Main Window -----*****/
@@ -108,7 +108,7 @@ element normal.active {
     text-color:                  @foreground;
 }
 element selected.normal {
-    background-color:            @selected;
+    background-color:            @selected-normal-background;
     text-color: @background;
 }
 element selected.urgent {
