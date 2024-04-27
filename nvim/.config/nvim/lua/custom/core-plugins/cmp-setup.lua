@@ -136,6 +136,11 @@ return {
             hl_group = 'CmpGhostText',
           },
         },
+        window = {
+          documentation = cmp.config.window.bordered({
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+          }),
+        },
       }
     end,
   },
