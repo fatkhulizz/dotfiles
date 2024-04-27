@@ -1,7 +1,7 @@
 icons_format = "{icon}"
 
 [theme]
-theme = "plain"
+theme = "native"
 
 [icons]
 icons = "awesome6"
@@ -9,8 +9,8 @@ icons = "awesome6"
 [[block]]
 block = "cpu"
 interval = 1
-format = " $icon $utilization "
-format_alt = " $icon $frequency{ $boost|} "
+format = "$icon $utilization"
+format_alt = "$icon $frequency{ $boost|}"
 
 [[block]]
 block = "disk_space"
@@ -20,12 +20,12 @@ alert_unit = "GB"
 interval = 20
 warning = 20.0
 alert = 10.0
-format = " $icon /: $available.eng(w:2) "
+format = "$icon /: $available.eng(w:2)"
 
 [[block]]
 block = "memory"
-format = " $icon $mem_total_used_percents.eng(w:2) "
-format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
+format = "$icon $mem_total_used_percents.eng(w:2)"
+format_alt = "$icon_swap $swap_used_percents.eng(w:2)"
 
 [[block]]
 block = "sound"
@@ -35,16 +35,15 @@ cmd = "pavucontrol"
 
 [[block]]
 block = "battery"
-device = "BAT0"
-format = " $icon $percentage "
+format = "$icon $percentage {$time |}$power"
+device = "DisplayDevice"
+driver = "upower"
 
 [[block]]
-block = "battery"
-device = "BAT1"
-format = " $icon $percentage "
+block = "kdeconnect"
+format = " $icon {$bat_icon $bat_charge |}{$notif_icon |}{$network_icon$network_strength $network_type |}"
+bat_good = 101
 
 [[block]]
 block = "time"
-interval = 30
-format = " $timestamp.datetime(f:'%a %d/%m %I:%M %p') "
-
+format = "$timestamp.datetime(f:'%a %d/%m %I:%M %p')"
