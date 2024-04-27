@@ -51,7 +51,7 @@ return {
             { "branch", icon = ' ' },
             { "diagnostics", },
             { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-            { "filename", path = 0, symbols = { modified = " ", } },
+            { "filename", path = 3, symbols = { modified = " ", }, shorting_target = 120 },
           },
           lualine_c = { '%=', { lsp_name } },
           lualine_x = {
