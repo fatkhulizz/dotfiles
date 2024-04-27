@@ -10,7 +10,7 @@
 /****************************************************************************
  * Betterfox                                                                *
  * "Ad meliora"                                                             *
- * version: 119                                                             *
+ * version: 122.1                                                           *
  * url: https://github.com/yokoffing/Betterfox                              *
 ****************************************************************************/
 
@@ -37,8 +37,6 @@ user_pref("media.cache_resume_threshold", 3600);
 user_pref("image.mem.decode_bytes_at_a_time", 32768);
 
 /** NETWORK ***/
-user_pref("network.buffer.cache.size", 262144);
-user_pref("network.buffer.cache.count", 128);
 user_pref("network.http.max-connections", 1800);
 user_pref("network.http.max-persistent-connections-per-server", 10);
 user_pref("network.http.max-urgent-start-excessive-connections-per-host", 5);
@@ -70,7 +68,6 @@ user_pref("browser.download.start_downloads_in_tmp_dir", true);
 user_pref("browser.helperApps.deleteTempFileOnExit", true);
 user_pref("browser.uitour.enabled", false);
 user_pref("privacy.globalprivacycontrol.enabled", true);
-user_pref("privacy.globalprivacycontrol.functionality.enabled", true);
 
 /** OCSP & CERTS / HPKP ***/
 user_pref("security.OCSP.enabled", 0);
@@ -102,17 +99,13 @@ user_pref("network.IDN_show_punycode", true);
 
 /** HTTPS-FIRST POLICY ***/
 user_pref("dom.security.https_first", true);
+user_pref("dom.security.https_first_schemeless", true);
 
 /** PASSWORDS ***/
-user_pref("signon.rememberSignons", false);
 user_pref("signon.formlessCapture.enabled", false);
 user_pref("signon.privateBrowsingCapture.enabled", false);
 user_pref("network.auth.subresource-http-auth-allow", 1);
 user_pref("editor.truncate_user_pastes", false);
-
-/** ADDRESS + CREDIT CARD MANAGER ***/
-user_pref("extensions.formautofill.addresses.enabled", false);
-user_pref("extensions.formautofill.creditCards.enabled", false);
 
 /** MIXED CONTENT + CROSS-SITE ***/
 user_pref("security.mixed_content.block_display_content", true);
@@ -203,7 +196,6 @@ user_pref("browser.privateWindowSeparation.enabled", false); // WINDOWS
 /** COOKIE BANNER HANDLING ***/
 user_pref("cookiebanners.service.mode", 1);
 user_pref("cookiebanners.service.mode.privateBrowsing", 1);
-user_pref("cookiebanners.service.enableGlobalRules", true);
 
 /** FULLSCREEN NOTICE ***/
 user_pref("full-screen-api.transition-duration.enter", "0 0");
@@ -220,11 +212,10 @@ user_pref("browser.urlbar.trending.featureGate", false);
 user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 
-/*** POCKET ***/
+/** POCKET ***/
 user_pref("extensions.pocket.enabled", false);
 
 /** DOWNLOADS ***/
-user_pref("browser.download.useDownloadDir", false);
 user_pref("browser.download.always_ask_before_handling_new_types", true);
 user_pref("browser.download.manager.addToRecentDocs", false);
 
@@ -244,9 +235,29 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 // visit https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
 // Enter your personal overrides below this line:
 
+ // PREF: restore login manager
+user_pref("signon.rememberSignons", true);
+
+// PREF: restore address and credit card manager
+user_pref("extensions.formautofill.addresses.enabled", true);
+user_pref("extensions.formautofill.creditCards.enabled", true);
+
+// PREF: allow websites to ask you to receive site notifications
+user_pref("permissions.default.desktop-notification", 0);
+
+// PREF: restore Top Sites on New Tab page
+user_pref("browser.newtabpage.activity-stream.feeds.topsites", true); // Shortcuts
+user_pref("browser.newtabpage.activity-stream.default.sites", ""); // clear default topsites
+
+// PREF: remove sponsored content on New Tab page
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false); // Sponsored shortcuts 
+user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false); // Recommended by Pocket
+user_pref("browser.newtabpage.activity-stream.showSponsored", false); // Sponsored Stories
+
 // PREF: disable Firefox View
 user_pref("browser.tabs.firefox-view", false);
-user_pref("browser.tabs.firefox-view-next", false); // [FF119+]
+user_pref("browser.tabs.firefox-view-next", false);
+user_pref("browser.tabs.firefox-view-newIcon", false); // needed?
 user_pref("browser.firefox-view.feature-tour", "{\"screen\":\"\",\"complete\":true}");
 
 // PREF: enable HTTPS-Only Mode
