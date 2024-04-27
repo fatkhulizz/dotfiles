@@ -15,13 +15,7 @@ set $menu ~/.config/rofi/scripts/launcher.sh
 set $lock i3lock --nofork --ignore-empty-password --show-failed-attempts --image=$HOME/Pictures/walls/sunset.png
 
 #||| Colors |||#
-# class                 border  backgr. text    indicator
-client.focused          #a7c080 #a7c080 #4b565c #a7c080
-client.unfocused        #4b565c #4b565c #d3c6aa #4b565c
-client.focused_inactive #4b565c #4b565c #4b565c #4b565c
-client.placeholder      #4b565c #4b565c #4b565c #4b565c
-client.urgent           #e67e80 #e67e80 #d3c6aa #e67e80
-client.background       #2b3339
+include ~/.config/i3/colors.conf
 
 #||| EXEC |||#
 # touchpad settings
@@ -200,14 +194,3 @@ bindsym $mod+x mode "$mode_system"
 bindsym Print exec "scrot -F '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/screenshoots/ &&  xclip -selection clipboard -t image/png -i ~/Pictures/screenshoots/$n'; sleep 1; exec dunstify 'screenshot has been saved'"
 bindsym $mod+Print --release exec "scrot -F '%Y-%m-%d_%H:%M:%S.png' -u 'mv $f s_loc/Pictures/screenshoots/ &&  xclip -selection clipboard -t image/png -i s_loc/Pictures/screenshoots/$n'; sleep 1; exec dunstify 'screenshot has been saved'"
 bindsym $mod+Shift+Print --release exec "scrot -F '%Y-%m-%d_%H:%M:%S.png' -s 'mv $f s_loc/Pictures/screenshoots/ && xclip -selection clipboard -t image/png -i s_loc/Pictures/screenshoots/$n'; sleep 1; exec dunstify 'screenshot has been saved'"
-
-#||| bar |||#
-bar {
-        # status_command i3status -c $HOME/.config/i3/i3status.conf
-        font pango:JetBrainsMono Nerd Font Propo 10
-        # font pango:DejaVu Sans 10
-        position top
-        status_command /usr/bin/i3status-rs $HOME/.config/i3/config.toml
-        tray_output primary
-        separator_symbol "┋"
-}
