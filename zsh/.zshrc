@@ -76,8 +76,12 @@ fi
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
 # asdf
-z4h source -- ~/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
+# z4h source -- ~/.asdf/asdf.sh
+# fpath=(${ASDF_DIR}/completions $fpath)
+#
+# mise
+eval "$(~/.local/bin/mise activate zsh)"
+eval "$(~/.local/bin/mise completion zsh)"
 
 # added custom completions
 fpath=(~/.zsh_completions.d $fpath)
@@ -149,4 +153,7 @@ export IDF_PATH="$HOME/Devs/embedded/espressif/ESP8266_RTOS_SDK"
 
 # export PATH="$HOME/Devs/linux/ffmpeg/bin:$PATH"
 
-# export PATH="$HOME/Developer/linux/ffmpeg/bin:$PATH"
+# Created by `pipx` on 2024-03-04 13:53:25
+export PATH="$PATH:/home/fuzz/.local/bin"
+
+z4h source "$HOME/.cargo/env"
