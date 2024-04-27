@@ -14,6 +14,11 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+-- terminal
+vim.keymap.set('n', '<leader>tv', '<cmd>vsplit +term<cr>a', { desc = 'Open terminal in vertical split' })
+vim.keymap.set('n', '<leader>ts', '<cmd>split +term<cr>a', { desc = 'Open terminal in horizontal split' })
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
 -- [[ Hacky Keymaps ]]
 
 -- set ; as :
