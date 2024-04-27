@@ -74,7 +74,6 @@ else
 fi
 
 # Source additional local files if they exist.
-z4h source /etc/profile
 z4h source ~/.env.zsh
 # asdf
 z4h source -- ~/.asdf/asdf.sh
@@ -140,7 +139,7 @@ alias rsynccp='rsync --archive --modify-window=2 --progress --verbose --itemize-
 
 #||| PATH |||#
 
-# arm-compiler
+# arm-compiler 
 export ARM_COMPILER="$HOME/Devs/embedded/stm32/arm-none-eabi"
 export PATH="$ARM_COMPILER/bin:$PATH"
 
