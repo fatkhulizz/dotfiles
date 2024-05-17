@@ -43,14 +43,18 @@
   # Red prompt symbol if the last command failed.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS}_FOREGROUND=red
   # Prompt symbol: bold arrow.
-  typeset -g POWERLEVEL9K_PROMPT_CHAR_CONTENT_EXPANSION='%B➜ '
+  typeset -g POWERLEVEL9K_PROMPT_CHAR_CONTENT_EXPANSION='%B󰬐 '
+  # Prompt symbol in command vi mode.
+  typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION='%B󰬕 '
+  # Prompt symbol in visual vi mode.
+  typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION='%B󰬝 '
 
   # Cyan current directory.
   typeset -g POWERLEVEL9K_DIR_FOREGROUND=cyan
   # Show only the last segment of the current directory.
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_last
   # Bold directory.
-  typeset -g POWERLEVEL9K_DIR_CONTENT_EXPANSION='%B$P9K_CONTENT'
+  typeset -g POWERLEVEL9K_DIR_CONTENT_EXPANSION='%B$P9K_CONTENT :'
 
   # Git status formatter.
   function my_git_formatter() {
