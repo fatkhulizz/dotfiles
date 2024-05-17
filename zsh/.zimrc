@@ -1,0 +1,23 @@
+#--- zimfw module ---#
+zmodule environment
+zmodule git
+zmodule input
+zmodule utility
+zmodule fzf
+zmodule exa
+zmodule joke/zim-mise
+zmodule kiesman99/zim-zoxide
+
+#--- Prompt ---#
+zmodule romkatv/powerlevel10k --use degit
+
+#--- Completion ---#
+zmodule Aloxaf/fzf-tab
+zmodule completion
+
+#--- Fish-like ---#
+zmodule zdharma-continuum/fast-syntax-highlighting
+zmodule zsh-users/zsh-history-substring-search
+zmodule zsh-users/zsh-autosuggestions
+
+#--- misc ---#
