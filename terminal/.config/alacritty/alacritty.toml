@@ -1,26 +1,26 @@
-import = ["/home/fuzz/.config/alacritty/rosepine/rose-pine.toml"]
+import = ["/home/fuzz/.config/alacritty/tokyonight/tokyonight_moon.toml"]
 live_config_reload = true
 
 [colors]
 draw_bold_text_with_bright_colors = true
 
 [font]
-size = 12.5
+size = 13
 
 [font.bold]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "FantasqueSansM Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "FantasqueSansM Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "FantasqueSansM Nerd Font"
 style = "Medium Italic"
 
 [font.normal]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "FantasqueSansM Nerd Font"
 style = "Medium"
 
 [font.offset]
