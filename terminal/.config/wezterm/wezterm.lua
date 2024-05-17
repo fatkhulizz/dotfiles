@@ -37,6 +37,8 @@ end)
 
 -- For example, changing the color scheme:
 config = {
+	-- dont start as login shell, dammit
+	default_prog = { '/usr/bin/zsh'},
 	-- enable_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = true,
 	use_fancy_tab_bar = false,
